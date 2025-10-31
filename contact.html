@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Électrical</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    .hidden { display: none; }
+
+    .success-message, .error-message {
+      margin-top: 1em;
+      padding: 0.8em;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-top: 0.3rem;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f3f3f3;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="FDH - Accueil">
+        <img src="FDH_3.SVG" alt="Logo FDH" width="48" height="48" />
+        <span class="brand">FDH</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a class="nav-link" href="index.html">Accueil</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="contact-form">
+      <h1>Contactez-nous</h1>
+      <p>Remplissez le formulaire ci-dessous et nous vous recontacterons rapidement.</p>
+
+      <!-- ✅ Formulaire Formspree -->
+      <form id="contactForm" action="https://formspree.io/f/xkgppwne" method="POST">
+        <label for="prenom">Prénom</label>
+        <input id="prenom" name="prenom" type="text" required placeholder="Votre prénom">
+
+        <label for="nom">Nom</label>
+        <input id="nom" name="nom" type="text" required placeholder="Votre nom">
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="votre@exemple.com">
+
+        <label for="phone">Téléphone</label>
+        <input id="phone" name="phone" type="tel" placeholder="+33 6 12 34 56 78">
+
+        <label for="type">Type d’intervention</label>
+        <select id="type" name="type" required>
+          <option value="installation">Installation</option>
+          <option value="depannage">Dépannage</option>
+        </select>
+
+        <label for="message">Message / Détails</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Décrivez la panne ou l'installation souhaitée"></textarea>
+
+        <!-- Redirection après envoi (facultatif) -->
+        <!-- <input type="hidden" name="_next" value="https://tonsite.fr/merci.html"> -->
+
+        <button type="submit">Envoyer la demande</button>
+        <div id="formStatus"></div>
+      </form>
+
+      <p class="note">
+        Ou contactez-nous directement :
+        <a href="tel:+33 69 83 17 28">+33 69 83 17 28</a> — 
+        <a href="mailto:fdhelec26@gmail.com">fdhelec26@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>©️ <span id="year2"></span> Électrical</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.innerHTML = '';
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { Accept: 'application/json' }
+        });
+
+        if (response.ok) {
+          status.innerHTML = `<p class="success-message">✅ Merci ! Votre message a bien été envoyé.</p>`;
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          console.error("Erreur Formspree :", errorData);
+          status.innerHTML = `<p class="error-message">❌ Erreur lors de l'envoi. ${errorData.error || "Veuillez réessayer."}</p>`;
+        }
+      } catch (error) {
+        console.error("Erreur réseau :", error);
+        status.innerHTML = `<p class="error-message">❌ Erreur de connexion. Vérifiez votre réseau.</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

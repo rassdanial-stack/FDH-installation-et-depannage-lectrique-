@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FDH</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-inner">
+    <!-- Logo externe (FDH_3.SVG) -->
+    <a class="logo" href="FDH_3.SVG" aria-label="FDH - Accueil">
+      <img src="FDH_3.SVG" alt="Logo FDH" width="48" height="48" />
+      <span class="brand">FDH</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a class="nav-link" href="index.html">Accueil</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Installation & Dépannage électriques</h1>
+      <p>Nous intervenons rapidement pour tous travaux d'installation électrique et de dépannage — logements, bureaux, restaurants.</p>
+      <p class="cta"><a href="contact.html" class="btn">Demandez une intervention</a></p>
+    </section>
+
+    <section class="services">
+      <article class="service">
+        <h2>Installation</h2>
+        <p>Nous réalisons l'installation complète de tableaux électriques, prises, éclairage LED, bornes de recharge, et plus encore. Travail conforme aux normes et sécurité prioritaire.</p>
+        <ul>
+          <li>Tableaux & disjoncteurs</li>
+          <li>Mise en conformité</li>
+          <li>Éclairage intérieur / extérieur</li>
+          <li>Bornes de recharge (voitures électriques)</li>
+        </ul>
+      </article>
+
+      <article class="service">
+        <h2>Dépannage</h2>
+        <p>En cas de panne, court-circuit, disjonctions répétées ou odeur de brûlé, nous diagnostiquons et réparons rapidement pour rétablir la sécurité et le courant.</p>
+        <ul>
+          <li>Diagnostic rapide</li>
+          <li>Réparation de circuits & prises</li>
+          <li>Remplacement de disjoncteurs / fusibles</li>
+          <li>Interventions d'urgence</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="gallery">
+      <h3>Exemples de réalisations</h3>
+      <div class="photos">
+        <img src="lightbulb-3104355_1280.jpg" alt="Installation électrique - exemple 1">
+        <img src="d8c23db3-e951-48d5-94db-66bfa3deadaf.JPG" alt="Tableau électrique - exemple 2">
+        <img src="depannge.JPG" alt="Dépannage sur site - exemple 3">
+      </div>
+    </section>
+
+    <section class="contact-info">
+      <h3>Nous trouver</h3>
+      <p><strong>Région :</strong> Drôme & Ardeche & Rhône & Isère (déplacement)</p>
+      <p><strong>Ville :</strong> Valence</p>
+      <p><strong>Adresse :</strong> 25 Rue Prompsault 26000 Valence</p>
+      <p><strong>Téléphone :</strong> <a href="tel:+33 69 83 17 28">+33 69 83 17 28</a> </p>
+      <p><strong>Email :</strong> <a href="mailto:fdhelec26@gmail.com">fdhelec26@gmail.com</a> </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>©️ <span id="year"></span> Électrical — Tous droits réservés</small>
+    </div>
+  </footer>
+
+  <script>
+    // simple script pour afficher l'année courante
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
